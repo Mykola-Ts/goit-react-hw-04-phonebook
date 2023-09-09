@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import { AiOutlineUser } from 'react-icons/ai';
+import { BsTelephone } from 'react-icons/bs';
 
 export const ContactLabel = styled.label`
   display: block;
@@ -9,13 +11,23 @@ export const ContactLabel = styled.label`
   font-weight: 700;
 `;
 
+export const WrapperInput = styled.div`
+  position: relative;
+
+  transition: color var(--transition-duration) var(--transition-timing-function);
+
+  &:has(input:focus) {
+    color: var(--blue-color);
+  }
+`;
+
 export const ContactInput = styled(Field)`
   display: block;
 
   width: 100%;
   border-radius: 8px;
   border: 1px solid var(--text-black-color);
-  padding: 8px 16px;
+  padding: 8px 16px 8px 32px;
   margin-top: 8px;
 
   outline: 2px solid transparent;
@@ -28,6 +40,20 @@ export const ContactInput = styled(Field)`
     border-color: transparent;
     outline-color: var(--blue-color);
   }
+`;
+
+export const NameInputIcon = styled(AiOutlineUser)`
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+`;
+
+export const NumberInputIcon = styled(BsTelephone)`
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
 `;
 
 export const SubmitButton = styled.button`

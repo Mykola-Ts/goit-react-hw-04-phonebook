@@ -6,7 +6,10 @@ import {
   ContactInput,
   ContactLabel,
   Error,
+  NameInputIcon,
+  NumberInputIcon,
   SubmitButton,
+  WrapperInput,
 } from './AddContactForm.styled';
 
 const contactSchema = object({
@@ -58,17 +61,23 @@ export const AddContactForm = ({ onAddContact }) => {
       <Form>
         <ContactLabel>
           Name
-          <ContactInput
-            type="text"
-            name="name"
-            placeholder="First name Last name"
-          />
+          <WrapperInput>
+            <ContactInput
+              type="text"
+              name="name"
+              placeholder="First name Last name"
+            />
+            <NameInputIcon size={18} />
+          </WrapperInput>
           <ErrorMessage name="name" component={Error} />
         </ContactLabel>
 
         <ContactLabel>
           Number
-          <ContactInput type="tel" name="number" placeholder="000-00-00" />
+          <WrapperInput>
+            <ContactInput type="tel" name="number" placeholder="000-00-00" />
+            <NumberInputIcon />
+          </WrapperInput>
           <ErrorMessage name="number" component={Error} />
         </ContactLabel>
 
