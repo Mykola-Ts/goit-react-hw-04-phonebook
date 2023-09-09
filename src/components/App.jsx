@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import toast, { Toaster } from 'react-hot-toast';
 import { toastOptions } from './helpers/helpers';
@@ -69,8 +69,18 @@ export const App = () => {
     setFilter(findName);
   };
 
-  const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+  const visibleContacts = useMemo(
+    () =>
+      contacts.filter(contact => {
+        const findContactsByName = contact.name
+          .toLowerCase()
+          .includes(filter.toLowerCase());
+
+        return findContactsByName
+          ? findContactsByName
+          : contact.number.includes(filter.toLowerCase());
+      }),
+    [contacts, filter]
   );
 
   return (
